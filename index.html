@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Simple Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="moneyDisplay">Money: $<span id="moneyAmount">100</span></div>
+
+    <div id="infoTab" class="info-tab">
+        <h1>Game Information</h1>
+        <p><strong>Starting Money:</strong> $100</p>
+        <p><strong>Bet Range:</strong> $1 to $500</p>
+        <p><strong>Winning Multiplier:</strong> 13x your bet</p>
+        <p>If you run out of money, simply refresh the page to start over.</p>
+        <p><a href="#" id="toggleInfo" style="text-decoration: none; color: #2b7a78; margin-top: 40px;">Hide Info</a></p> <!-- Increased margin-top here -->
+    </div>
+    
+
+    <table alignt="center">
+        <tr>
+            <td><img id="SlotImage1" src="cherry.png" alt="Slot Image #1"></td>
+            <td><img id="SlotImage2" src="cherry.png" alt="Slot Image #2"></td>
+            <td><img id="SlotImage3" src="cherry.png" alt="Slot Image #3"></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button onclick="DoSpin()" id="spinButton">Spin!</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="bet-controls">
+                <label for="betAmount">Bet amount</label>
+                <div class="bet-adjust">
+                    <button onclick="decreaseBet()">-</button>
+                    <span id="betAmount">2</span>
+                    <button onclick="increaseBet()">+</button>
+                </div>
+            </td>
+        </tr>
+        
+    </table>
+    <div id="winMessage" style="display:none;">
+        You won <span id="winAmount">0</span> $
+    </div>
+    
+    <div id="messageDisplay" class="message-display"></div>
+    <a href="https://sikec.cz/jakubsdf/" id="homeIcon" title="Home">
+        <img src="home.png" alt="Home" />
+    </a>
+</body>
+</html>
