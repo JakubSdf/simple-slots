@@ -3,46 +3,195 @@
 <head>
     <title>Simple Slots</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="7.png" type="image/png">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="moneyDisplay">Money: $<span id="moneyAmount">100</span></div>
+    <!-- <div id="moneyDisplay">Money: $<span id="moneyAmount">100</span></div> -->
 
     <div id="infoTab" class="info-tab">
-        <h1>Game Information</h1>
-        <p><strong>Starting Money:</strong> $100</p>
-        <p><strong>Bet Range:</strong> $1 to $500</p>
-        <p><strong>Winning Multiplier:</strong> 13x your bet</p>
-        <p>If you run out of money, simply refresh the page to start over.</p>
-        <p><a href="#" id="toggleInfo" style="text-decoration: none; color: #2b7a78; margin-top: 40px;">Hide Info</a></p> <!-- Increased margin-top here -->
+        <h2>Paytable</h2>
+        <table id="paytable" class="paytable-style">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Multiplier (3)</th>
+                    <th>Multiplier (4)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="cherry.png" alt="Cherry"></td>
+                    <td>2x</td>
+                    <td>4x</td>
+                </tr>
+                <tr>
+                    <td><img src="lemon.png" alt="Lemon"></td>
+                    <td>2x</td>
+                    <td>4x</td>
+                </tr>
+                <tr>
+                    <td><img src="grape.png" alt="Grape"></td>
+                    <td>5x</td>
+                    <td>25x</td>
+                </tr>
+                <tr>
+                    <td><img src="plum.png" alt="Plum"></td>
+                    <td>3x</td>
+                    <td>9x</td>
+                </tr>
+                <tr>
+                    <td><img src="watermelon.png" alt="Watermelon"></td>
+                    <td>5x</td>
+                    <td>25x</td>
+                </tr>
+                <tr>
+                    <td><img src="bell.png" alt="Bell"></td>
+                    <td>8x</td>
+                    <td>16x</td>
+                </tr>
+                <tr>
+                    <td><img src="7.png" alt="7"></td>
+                    <td>40x</td>
+                    <td>160x</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:0.8em; margin-top:10px;">Winning lines details are shown on spin.</p>
     </div>
     
 
-    <table alignt="center">
-        <tr>
-            <td><img id="SlotImage1" src="cherry.png" alt="Slot Image #1"></td>
-            <td><img id="SlotImage2" src="cherry.png" alt="Slot Image #2"></td>
-            <td><img id="SlotImage3" src="cherry.png" alt="Slot Image #3"></td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <button onclick="DoSpin()" id="spinButton">Spin!</button>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" class="bet-controls">
-                <label for="betAmount">Bet amount</label>
+    <div id="gameGridWrapper" style="position: relative; display: inline-block;">
+        <table id="gameGridTable">
+            <tr>
+                <td data-row="0" data-col="0">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 0, row 0 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="0" data-col="1">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 1, row 0 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="0" data-col="2">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 2, row 0 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="0" data-col="3">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 3, row 0 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td data-row="1" data-col="0">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 0, row 1 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="1" data-col="1">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 1, row 1 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="1" data-col="2">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 2, row 1 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="1" data-col="3">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 3, row 1 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td data-row="2" data-col="0">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 0, row 2 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="2" data-col="1">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 1, row 2 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="2" data-col="2">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 2, row 2 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+                <td data-row="2" data-col="3">
+                    <div class="reel-viewport">
+                        <div class="reel-symbols-container">
+                            <!-- Symbols for reel 3, row 2 will be populated by JS -->
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="controls-footer">
+        <div class="info-displays">
+            <div id="moneyDisplay" class="footer-box">
+                <span class="footer-box-label">Money</span>
+                <span id="moneyAmountText"><span id="moneyAmount">100</span></span>
+            </div>
+            <div class="bet-controls footer-box">
+                <label for="betAmount" class="footer-box-label">Bet amount</label>
                 <div class="bet-adjust">
                     <button onclick="decreaseBet()">-</button>
                     <span id="betAmount">2</span>
                     <button onclick="increaseBet()">+</button>
                 </div>
-            </td>
-        </tr>
-        
-    </table>
+            </div>
+            <div id="winDisplayPlaceholder" class="footer-box">
+                <span class="footer-box-label">Win</span>
+                <span id="winValueText"><span id="winValue">0</span></span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="maxBetButton" class="action-btn">Max Bet</button>
+            <button onclick="DoSpin()" id="spinButton" class="action-btn main-action-btn">Spin!</button>
+            <div class="autospin-controls">
+                <button id="autoSpinButton" class="action-btn">Autospin</button>
+                <div id="autospinSetup" class="autospin-setup">
+                    <button id="decreaseAutospin" class="autospin-adjust-btn">-</button>
+                    <span id="autospinCountDisplay">10</span>
+                    <button id="increaseAutospin" class="autospin-adjust-btn">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="winMessage" style="display:none;">
-        You won <span id="winAmount">0</span> $
+        <span id="winAmount">0</span>
     </div>
     
     <div id="messageDisplay" class="message-display"></div>
